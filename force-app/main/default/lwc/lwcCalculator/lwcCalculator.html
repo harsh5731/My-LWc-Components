@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-3">
+            <span></span>
+            <lightning-card>
+                <lightning-input type="Number" label="Enter First number" value={num1}
+                    onchange={handleChanheNum1}></lightning-input>
+                <lightning-input type="Number" label="Enter Second number" value={num2}
+                    onchange={handleChanheNum2}></lightning-input>
+    
+            <lightning-button variant="base" label="Add" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="base" label="Substract" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="base" label="Multiply" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+            <lightning-button variant="base" label="Divide" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+
+            <lightning-input type="Number" label="result" value={result}></lightning-input>
+            <lightning-button label="memory" onclick={showMemory}></lightning-button>
+            </lightning-card>
+
+        </div>
+        <template if:true={tabControll}>
+            <lightning-card>
+
+            <div class="slds-col slds-size_1-of-2">
+                <template for:each={memoryArray} for:item="memory">
+                    {memory.num1} {memory.operation} {memory.num2} = {memory.result}
+                </template>
+                </div>
+
+                </lightning-card>
+
+        </template>
+
+    </div>
+    </template>

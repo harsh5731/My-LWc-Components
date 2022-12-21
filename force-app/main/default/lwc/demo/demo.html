@@ -1,0 +1,63 @@
+<template>
+    <lightning-card title="I am Parent with Nesting" icon-name="utility:user">
+        <lightning-button label="show child" onclick={fun1}></lightning-button>
+            
+                <template for:each={a} for:item="acc">
+                    <c-child-component-lwc  key={acc} >
+                    </c-child-component-lwc>
+                </template>
+                
+            
+    </lightning-card>
+</template>
+
+
+
+
+
+
+
+
+
+    <!-- <lightning-card>
+        <template for:each={myData} for:item="acc">
+            <c-child-component-lwc key={acc.Id}  mydata={acc}>
+            </c-child-Component-lwc>
+        </template>
+</lightning-card>
+ <lightning-card>
+    <div>
+        <h1>Hello World
+            {str}
+        </h1>
+    </div>
+ </lightning-card> 
+ <lightning-card>
+    
+    <template if:true={Result1}  for:each={Result} for:item="acc" for:index="index">
+        <div key={acc.id} >
+          <lightning-button label={acc.Name} onclick={fun1} value={index}></lightning-button>
+        </div>
+      
+    </template>
+    <template if:false={Result1}>
+        Error
+    </template>
+    <div>
+        <h1>
+        </h1>
+    </div>
+    <lightning-input type = "Text" placeholder="Enter the value1 " label="Name" onchange={fun1}>  
+    </lightning-input>
+        <lightning-input type = "Text" placeholder="Enter the value2 " label="Name" onchange={fun2}></lightning-input>
+    <! <lightning-button label="Sum" onclick={Sum} ></lightning-button> -->
+    <!-- <lightning-button label="Subtract" onclick={Sub} ></lightning-button> -->
+    <!-- <lightning-button label="Submit" onclick={Function1} ></lightning-button>
+    <lightning-button label="GetData" onclick={Function2} ></lightning-button>
+    <lightning-button label="Divide" onclick={function1}></lightning-button> -->
+
+   
+
+<!--    
+
+</lightning-card> -->

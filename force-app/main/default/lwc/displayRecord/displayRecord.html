@@ -1,0 +1,28 @@
+<template>
+    <lightning-card>
+        <lightning-accordion class="example-accordion" onsectiontoggle={handleToggleSection} active-section-name="B">
+            <lightning-accordion-section name="A" label="Accordion Title HARSH">
+                <lightning-button-menu slot="actions" alternative-text="Show menu" icon-size="x-small"
+                    menu-alignment="right">
+                    <lightning-menu-item value="New" label="Menu Item One"></lightning-menu-item>
+                    <lightning-menu-item value="Edit" label="Menu Item Two"></lightning-menu-item>
+                </lightning-button-menu>
+                <template for:each={Record} for:item="data">
+                    Name =  {data.Name}
+                </template>
+            </lightning-accordion-section>
+        </lightning-accordion>
+        <lightning-button label="Click Me" onclick={Function1}></lightning-button>
+
+
+        <!-- <lightning-record-edit-form object-api-name="Account" record-id={recordId}>
+            <lightning-input-field field-name={nameField}> </lightning-input-field>
+            <div class="slds-var-m-top_medium">
+                <lightning-button variant="brand" type="submit" label="Save">
+                </lightning-button>
+            </div>
+        </lightning-record-edit-form> -->
+    </lightning-card>
+
+
+</template>

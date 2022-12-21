@@ -1,0 +1,10 @@
+<template>
+    <lightning-button label="Submit" onclick={fun1}></lightning-button>
+    <template if:true={myvar}>
+<lightning-card><p>This is Template 1</p></lightning-card>
+    </template>
+    <template if:false={myvar}>
+<lightning-card><p>This is Template 2</p></lightning-card>
+    </template>
+    
+</template>
