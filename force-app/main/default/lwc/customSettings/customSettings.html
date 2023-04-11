@@ -1,0 +1,38 @@
+<template>
+<lightning-card>
+    <h1>
+    <lightning-button label={label} onclick={fun1}></lightning-button>
+
+    </h1>
+    
+    <br>
+    <br>
+   
+    <div class="slds-form-element">
+        <label class="slds-checkbox_toggle slds-grid">
+        <span class="slds-form-element__label slds-m-bottom_none">IsTriggerActive</span>
+        <input type="checkbox" name="checkbox-toggle-15" value={isTriggerChecked} onchange={checkbox1Value} aria-describedby="checkbox-toggle-15" />
+        <span id="checkbox-toggle-15" class="slds-checkbox_faux_container" aria-live="assertive">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-checkbox_on">Enabled</span>
+        <span class="slds-checkbox_off">Disabled</span>
+        </span>
+        </label>
+        </div>
+        <br>
+     <div class="slds-form-element">
+        <label class="slds-checkbox_toggle slds-grid">
+        <span class="slds-form-element__label slds-m-bottom_none">IsEmailSend</span>
+        <input type="checkbox" name="checkbox-toggle-15" value={isEmailChecked} onchange={checkbox2Value} aria-describedby="checkbox-toggle-15" />
+        <span id="checkbox-toggle-16" class="slds-checkbox_faux_container" aria-live="assertive">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-checkbox_on">Enabled</span>
+        <span class="slds-checkbox_off">Disabled</span>
+        </span>
+        </label>
+        </div>
+        
+        <lightning-button label="Save" variant="brand" onclick={sendValues} ></lightning-button>
+</lightning-card>
+
+</template>

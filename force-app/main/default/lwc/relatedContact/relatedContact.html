@@ -1,0 +1,12 @@
+<template>
+    <lightning-card variant="Narrow" title="Related Contacts" icon-name="standard:account">
+      </lightning-card>
+      <template if:true={showTable}>
+      <lightning-datatable
+              key-field="Id"
+              data={contacts}
+              columns={columns}>
+      </lightning-datatable>
+    </template>
+  </template>
+  

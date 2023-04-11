@@ -1,0 +1,128 @@
+<template>
+    <lightning-card title="Modal" icon-name="custom:custom20">
+       
+       <!-- lightning button for open custom modal window -->
+       <lightning-button variant="brand"
+       label="Contact"
+       title="Open Modal"
+       onclick={customShowModalPopup}
+       class="slds-m-left_x-small"></lightning-button>
+       
+       <!-- modal start -->        
+       <template if:true={customFormModal}>  
+       
+       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+       <div class="slds-modal__container">
+           <!-- modal header start -->
+           <header class="slds-modal__header">
+               <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={customHideModalPopup}>
+                   <lightning-icon icon-name="utility:close"
+                   alternative-text="close"
+                   variant="inverse"
+                   size="small" ></lightning-icon>
+                   <span class="slds-assistive-text">Close</span>
+               </button>
+               <h2 class="slds-text-heading_medium slds-hyphenate">Contact Modal Form</h2>
+           </header>
+           <!-- modal body start -->
+           <lightning-card>
+               <div slot="title">
+                   <h3>
+                       <lightning-icon icon-name="standard:contact" size="small"></lightning-icon> Contact form in LWC
+                       </h3>
+                   </div>
+               <div class="slds-grid slds-wrap">
+                   <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                       <div class="slds-form-element">
+                       <lightning-input label="First Name" value={firstName} onchange={contactChangeVal}></lightning-input>
+                       </div>
+                   </div>
+                   <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                   <div class="slds-form-element
+                   ">
+                       <lightning-input label="Last Name" value={lastName} onchange={contactChangeVal}></lightning-input>
+                     </div>
+                      </div>
+                  <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                   <div class="slds-form-element">
+                       <lightning-input type="date" label="Birth Date" value={bday} onchange={contactChangeVal}></lightning-input>
+                       </div>
+                   </div>
+                   <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                   <div class="slds-form-element">
+                       <lightning-input label="Email" value={emailId} onchange={contactChangeVal} ></lightning-input>
+                       </div>
+                   </div>
+                   <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                   <div class="slds-form-element">
+                       <lightning-input label="Department" value={departmentVal} onchange={contactChangeVal} ></lightning-input>
+                       </div>
+                   </div>
+                   <!-- <div class="slds-p-horizontal--small slds-col slds-size_6-of-12 slds-m-bottom--medium">
+                   </div> -->
+               </div>
+               <button class="slds-button slds-button--destructive" onclick={customHideModalPopup}>Cancel</button>
+               <button class="slds-button slds-button_brand" label="Create" onclick={insertContactAction} >Create</button>
+                <button class="slds-button slds-button--brand" label ="Update" onclick={updateRecord}>Update</button>
+             </lightning-card>
+       <!-- modal footer start-->
+         
+       </div>
+       </div>
+       </section>
+       <div class="slds-backdrop slds-backdrop_open">
+       </div>
+       </template>
+       <!-- modal end -->
+   
+   <!-- input contact -->
+                    <div class="slds-form-element__control">
+                                       <lightning-input type="text" 
+                                                        value={conName}
+                                                        label="Enter Contact Name" 
+                                                        onchange={handleContactName} placeholder="Search Contact">                                         </lightning-input>
+                               </div>
+     <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+     <thead>
+       <tr class="slds-line-height_reset">
+         <th class="" scope="col">
+           <div class="slds-truncate" title="name">Contact Name</div>
+         </th>
+         <th class="" scope="col">
+           <div class="slds-truncate" title="email">Email</div>
+         </th>
+         <th class="" scope="col">
+           <div class="slds-truncate" title="phone">Phone</div>
+         </th>
+         <th class="" scope="col">
+           <div class="slds-truncate" title="department">Department</div>
+         </th>
+       </tr>
+         </thead>
+           <tbody id="table-body">
+               <template for:each={searchData} for:item="obj">
+                   <tr key={obj.Id}> 
+                       <td> {obj.Name} </td>
+                       <td> {obj.Email} </td>
+                       <td> {obj.Phone} </td>
+                       <td> {obj.Department} </td>
+                       <td> <lightning-button variant="base" label="Edit" value={obj.Id} title="edit" onclick={handleClick}></lightning-button> </td>
+                       <td> <lightning-button variant="base" label="Delete" value={obj.Id} title="delete" onclick={handleDelete}></lightning-button> </td>
+                   </tr>
+   
+               </template>
+   
+           </tbody>
+       </table>
+       
+       <!-- <template if:true={searchData}>
+               <lightning-datatable data={searchData} 
+                                    columns={columns} 
+                                    onrowaction={callRowAction}
+                                    key-field="id"></lightning-datatable>
+           </template>  -->
+   
+       </lightning-card>  
+        
+   
+   </template>

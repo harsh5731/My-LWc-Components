@@ -1,131 +1,105 @@
-import { LightningElement,wire,track } from 'lwc';
-import getCustomSetting from '@salesforce/apex/caseRestorePage.getCustomSettings';
-export default class GameParentComponent extends LightningElement {
-    recordTypePicklistOptions = []
+import { LightningElement,wire,track} from 'lwc';
+import getCustomSetting from '@salesforce/apex/CaseGame.getCustomSettings';
+import getCases from '@salesforce/apex/CaseGame.showCase';
+const columns = [
+    { label: 'Case Number', fieldName: 'CaseNumber' },
+    { label: 'Status', fieldName: 'Status'},
+    { label: 'Priority', fieldName: 'Priority'},
+    { label: 'Case Origin', fieldName: 'Origin'},
+    {label: 'Case Subject', fieldName: 'Subject'},
+    { label: 'Description', fieldName: 'Description'},
+    { label: 'Id', fieldName: 'Id'},
+];
 
-    @track recordTypePicklistOptionsTr;
+export default class GameParentComponent extends LightningElement {
+
+
+
+
+    recordTypePicklistOptions = []
+    @track dataTable = [];
+
+    @track recordTypePicklistOptions;
+    @track gameValue;
+    @track userId;
+    @track fromDate;
+    @track tillDate;
+    @track columns = columns;
 
     @wire(getCustomSetting)
-    getCustomSettings ({ error, data }) {
+    getCustomSettings({ error, data }) {
           var a=[];
-        if (data) {
-           
+        if (data) { 
             console.log('data', data);
-           
-          data.forEach(e => {
-              
-                var obj = {label: e.Name, value: e.GameTypes__c};
+          data.forEach(element => {
+                var obj = {
+            label: element.Name, 
+            value: element.Name};
             a.push(obj);
           });
-               
-                
-            
-                console.log( a);
-            this.recordTypePicklistOptionsTr=a;
-            // this.record = data;
-            // this.error = undefined;
+               console.log(a);
+            this.recordTypePicklistOptions=a;
         } else if (error) {
-            //this.error = error;
-            //this.record = undefined;
-            this.Result1 = false;
+           /// this.Result1 = false;
             console.log('error', error);
         }
     }
 
-   connectedCallback() {
-       console.log('inside conn');
-       //this.recordTypePicklistOptionsTr = this.recordTypePicklistOptions;
-       console.log('this is log',this.recordTypePicklistOptionsTr);
-    //    getCustomSetting().then(result =>{
-    //        this.contacts = result;
-    //        console.log(this.contacts)
-    //        }).catch(error=>{
-    //            console.log(error)
-    //        });
-   } 
+  connectedCallback() {
+ console.log('Connected Call Back');
+       console.log('this is log',this.recordTypePicklistOptions); }
 
    changeHandler(event){
        console.log('selected value', event.detail.value);
+       this.gameValue=event.detail.value;  
    }
+
+   startDateHandler(event){
+    this.fromDate = event.detail.value;
+    console.log('Start Date>>>',this.fromDate);
+   }
+
+   endDateHandler(event){
+    this.tillDate = event.detail.value;
+    console.log('End Date>>>',this.tillDate);
+   }
+
+   userIdHandler(event){ 
+       this.userId = event.detail.value;
+    //console.log('User Id>>>',this.userId);
+    }
+
+//     changeHandler(event){
+//         console.log(event.target.value);
+//         console.log('name >> ',event.target.name);
+//        console.log('selected value', event.detail.value);
+//             if(event.target.name == 'progress') {
+//                 this.gameValue = event.detail.value;
+//             }else if(event.target.name == 'userId'){
+//                 this.userId = event.target.value;
+//                // console.log('user id->> ',this.userId);
+//             }else if(event.target.name == 'fromDate'){
+//                 this.fromDate = event.target.value;
+//               //  console.log(this.fromDate);
+//             }else if(event.target.name == 'tillDate'){
+//                 this.tillDate = event.target.value;
+//             }    
+//    }
+
+   handleClick(){
+       console.log('User Id ',this.userId);
+       getCases({userid:this.userId, gameType:this.gameValue, fromDate:this.fromDate, tillDate:this.tillDate})
+    .then(result => {
+        this.dataTable =result;
+        console.log('result>>>',result);     
+    }) 
+    .catch(error => {
+        console.log('error->> ',error);
+    });
+
+}
+   
    handleReset(){
     this.template.querySelector('form').reset();
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// import { LightningElement, track, wire } from 'lwc';
-// import getCustomSettings from '@salesforce/apex/CaseRestorePage.getCustomSettings';
-
-// export default class CaseRestorePage extends LightningElement {
-
-//     @track a;
-//     @track recordTypePicklistOptions ;
-//     @track error;
-
-
-//     //@wire(getCustomSettings)
-//     // getCustomSettings ({ error, data }) {
-//     //     if (data) {
-//     //         console.log('data', data);
-//     //         this.a = data;
-//     //         for(var i = 0; i < data.length; i++){
-//     //             console.log(data[i]);
-//     //             console.log(data[i].Id);
-//     //             console.log(data[i].GameTypes__c);
-//     //             var obj = {};
-//     //             obj.value = data[i].Name;
-//     //             obj.label = data[i].GameTypes__c;
-//     //             this.recordTypePicklistOptions.push(obj);
-//     //             console.log( this.recordTypePicklistOptions);
-//     //         }
-//     //         // this.record = data;
-//     //         // this.error = undefined;
-//     //     } else if (error) {
-//     //         //this.error = error;
-//     //         //this.record = undefined;
-//     //         this.Result1 = false;
-//     //         console.log('error', error);
-//     //     }
-//     // }
-
-//     handleLoad() {
-//         getCustomSettings()
-//             .then(result => {
-//                 console.log(result);
-//                 var a=[];
-//                 result.forEach(element => {
-//                     var obj = {
-//                         label : element.GameTypes__c,
-//                         value : element.Name
-//                     };
-                   
-//                     a.push(obj);
-                    
-//                 });
-
-//                 console.log(a);
-//                 this.recordTypePicklistOptions=a;
-//                 console.log('Data',toString(this.recordTypePicklistOptions));
-//             })
-//             .catch(error => {
-//                 console.log('error', error);
-//             });
-//     }
-
-
-
-//     connectedCallback(){
-//         this.handleLoad();
-        
-//     }
-// }

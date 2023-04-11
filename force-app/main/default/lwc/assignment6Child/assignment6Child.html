@@ -1,0 +1,32 @@
+<template>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+      <thead>
+        <tr class="slds-line-height_reset">
+          <th class="" scope="col">
+            <div class="slds-truncate" title="name">Contact Name</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="email">Email</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="phone">Phone</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="department">Department</div>
+          </th>
+        </tr>
+          </thead>
+            <tbody id="table-body">
+                <template for:each={conRecords.data} for:item="obj">
+                    <tr key={obj.Id}> 
+                        <td onclick={handleChange} data-id={obj.Id} > <a data-id={obj.Id} href="#"> {obj.Name} </a> </td>
+                        <td> {obj.Email} </td>
+                        <td> {obj.Phone} </td>
+                        <td> {obj.Department} </td>
+                    </tr>
+    
+                </template>
+    
+            </tbody>
+        </table>
+    </template>

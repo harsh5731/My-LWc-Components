@@ -1,6 +1,10 @@
 <template>
+<template if:true={showChild}>
     <lightning-card title={mytitle}>
-        <p>My Lwc Component test  asasda</p>
+        <p>You Submitted this-->{getvalueFromParent}</p>
     </lightning-card>
-    
+    </template>
+ <!-- <template if:false={showChild}>
+    Data Not Found
+</template>  -->
 </template>

@@ -1,0 +1,17 @@
+<template>
+    <lightning-card>
+ 
+        <lightning-input type="checkbox" onchange={handleCheck} label="Show Hide"></lightning-input>
+        <template if:true={showHide}>
+        <div style="background-color: yellow;">
+            <h1 style="color: red;">Name: Harsh Gangwar</h1>
+        <h1 style="color: green;">Age: 21</h1>
+        <h1 style="color: blue;">Address: Bareilly</h1>
+        <h1 style="color: black;">Phone:9690905331</h1>
+        <lightning-input type="text" onchange={handlechange} placeholder="Two Way Data Binding..." label="Two Way Data Binding"></lightning-input>
+        {inputVal}
+        </div>
+    </template>
+    </lightning-card>
+ </template>
+ 

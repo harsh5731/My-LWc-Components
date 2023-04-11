@@ -1,0 +1,46 @@
+<template>
+    <lightning-card>
+
+        <template for:each={appsList} for:item="obj" >
+            <p key={obj.Id}> </p>
+        </template>
+
+    <table class="slds-table slds-table_bordered slds-no-row-hover slds-table_cell-buffer" role="grid">      
+        <thead>
+           <tr>
+               <th scope="col" height="22">Name</th>
+               <th scope="col" height="22">Email</th>
+               <th scope="col" height="22">Phone</th>
+               <th scope="col" height="22">Application Name</th>
+               <th scope="col" height="22" style="width: 3rem"></th>
+           </tr>
+           </thead>
+       <tbody>
+       <template for:each={appList} for:item="item" for:index="index">
+           <tr key={item.Email}  class="slds-hint-parent">  
+               <!-- <td style="font-weight: bold">
+                       <lightning-formatted-number value={sNo}></lightning-formatted-number>.
+                   </td> -->
+               <td>
+                {item.Name}
+               </td>
+               <td>
+                {item.Email}
+               </td>
+               <td>
+                {item.Phone}
+               </td>
+               <td>
+                <template for:each={item.App} for:item="application">
+                 <a href="force:navigateToSObject" key = {application.Id} data-id={application.Id} class={application.isClass} onclick={navigateToViewAccountPage} >{application.Name}</a>
+                </template> 
+           </td>
+               <td>
+                </td>
+                   <!-- <lightning-button variant="destructive" data-index={index} onclick={handleRemoveRow} name="remove" label="Remove Row">
+               </lightning-button>
+                    -->
+           </tr>
+       </template> </tbody> </table>
+    </lightning-card>
+</template>

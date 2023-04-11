@@ -1,0 +1,15 @@
+<template>
+    <lightning-card>
+      <lightning-combobox
+        name="progress"
+        label="Accounts"
+        value={value}
+        placeholder="Select Account"
+        options={accPickList}
+        onchange={handleChange}></lightning-combobox>
+    
+    </lightning-card>
+   
+    <c-related-contact idfromparent={accId} show-table={showchild} ></c-related-contact>
+   
+</template> 

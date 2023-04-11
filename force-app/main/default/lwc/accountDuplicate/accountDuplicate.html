@@ -1,0 +1,84 @@
+<template>
+     <lightning-card>
+        <lightning-button label="Search" variant="Brand" onclick={handleClick}></lightning-button>
+        <template if:true={showdatatable}>
+          <lightning-card title="All Accounts">
+            <lightning-datatable 
+            data={uniqueAccounts} 
+            columns={columns} 
+            key-field="Id">
+            sorted-by={sortBy}
+            sorted-direction={sortDirection}
+            onsort={doSorting}
+          </lightning-datatable>
+          </lightning-card>
+        </template>
+
+<template if:true={showModal}>
+<!-- modal start -->       
+<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+<div class="slds-modal__container">
+<!-- modal header start -->
+  <header class="slds-modal__header">
+     <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+        <lightning-icon icon-name="utility:close"
+           alternative-text="close"
+           variant="inverse"
+           size="small" ></lightning-icon>
+        <span class="slds-assistive-text">Close</span>
+     </button>
+     <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Duplicates Accounts</h2>
+  </header>
+
+  <!-- modal body start -->
+  <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" aria-label="Example table of Opportunities with vertical borders">
+      <thead>
+        <tr class="slds-line-height_reset">
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Account Name">Account Name</div>
+          </th>
+          <th class="" scope="col">
+            <div class="slds-truncate" title="Dupilcate Accounts">Duplicate Accounts</div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <template for:each={groupedData} for:item="group">
+          <tr key={group.Name}>
+              <td data-label="Account Name" class="slds-cell-wrap">{group.Name}</td>
+              <td data-label="Duplicate Account" class="slds-cell-wrap">
+                  <lightning-combobox
+                      data-id={group.Id}
+                      name={group.Name}
+                      value={group.Duplicate_Account__c}
+                      placeholder="Select duplicate account..."
+                      options={group.options}
+                      onchange={handleDuplicateAccountChange}
+                  >
+                  </lightning-combobox>
+              </td>
+          </tr>
+      </template>
+      </tbody>
+    </table>
+
+  </div>
+
+  <!-- modal footer start-->
+  <footer class="slds-modal__footer">
+     <button class="slds-button slds-button_neutral" onclick={handleSave}>Save</button>
+     <button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+  </footer>
+
+</div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+<!-- </template> -->
+<!-- modal end -->
+
+</template>
+    </lightning-card>
+    
+</template>

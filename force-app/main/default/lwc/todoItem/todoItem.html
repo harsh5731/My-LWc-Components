@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Duplicate Account Picker">
+        <template if:true={groupedData}>
+            <div class="slds-scrollable">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="slds-cell-wrap" scope="col">
+                                <div class="slds-truncate" title="Account Name">Account Name</div>
+                            </th>
+                            <th class="slds-cell-wrap" scope="col">
+                                <div class="slds-truncate" title="Duplicate Account">Duplicate Account</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={groupedData} for:item="group">
+                            <tr key={group.Name}>
+                                <td data-label="Account Name" class="slds-cell-wrap">{group.Name}</td>
+                                <td data-label="Duplicate Account" class="slds-cell-wrap">
+                                    <lightning-combobox
+                                        data-id={group.Id}
+                                        name={group.Name}
+                                        value={group.Duplicate_Account__c}
+                                        placeholder="Select duplicate account..."
+                                        options={group.options}
+                                    >
+                                    </lightning-combobox>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+        <template if:false={groupedData}>
+            No data to display.
+        </template>
+    </lightning-card>
+</template>

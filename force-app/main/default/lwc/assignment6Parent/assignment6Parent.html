@@ -1,0 +1,12 @@
+<template>
+    <template if:true={showParent}>
+    <lightning-card>
+    <template for:each={conRecords} for:item="obj">
+              {obj.Name} 
+              {obj.Email} 
+              {obj.Phone}  
+              {obj.Department} </template>
+        </lightning-card>   
+    </template>
+    <c-assignment6-child oncusevent={handleChange}> </c-assignment6-child>
+    </template>

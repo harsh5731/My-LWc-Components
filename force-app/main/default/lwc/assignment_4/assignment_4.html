@@ -1,0 +1,26 @@
+<!-- <template>
+    <lightning-card>
+        <div style="height: 300px;">
+            <lightning-datatable
+                    key-field="id"
+                    data={result}
+                    columns={columns}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template> -->
+<template>
+<lightning-card  variant="Narrow"  title="Contacts" icon-name="standard:contact">
+    <div> 
+<lightning-button variant="brand" label="Show Contacts" onclick={showData}></lightning-button>    
+<lightning-button variant="brand" label="Hide Contacts" onclick={hideData}></lightning-button>
+</div>
+<template if:true={showCon}>
+<lightning-datatable
+                             key-field="Id"
+                             data={result}
+                             columns={columns}>
+        </lightning-datatable>
+</template>
+</lightning-card>
+</template>

@@ -1,6 +1,39 @@
 <template>
-    <lightning-card title="I am child Nested" icon-name="utility:user">
-        jygjyuffufufuttf
+    <lightning-card title ="This is First Child">
+     <!-- <lightning-input label="Enter the Data" onchange={fun1} ></lightning-input>-->
+      <!-- <lightning-button label="Send data to Second Child" onclick={fun2}></lightning-button> -->
+</lightning-card>
+    <c-thirdchild onsenddata={showChildData}></c-thirdchild>
+  
+
+</template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <lightning-card title="I am child Nested" icon-name="utility:user">
+        I am child of this parent
         <template if:true={mydata}>
             <div class="slds-var-m-around_medium">
                 <b>Name : {mydata.Name}
@@ -10,8 +43,6 @@
             </div>
         </template>
         <template if:false={mydata}>
-            No Data found.
 
         </template>
-    </lightning-card>
-</template>
+    </lightning-card> -->

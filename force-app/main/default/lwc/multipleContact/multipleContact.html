@@ -1,0 +1,11 @@
+<template>
+    <lightning-card>
+    <lightning-button label="sendData" onclick={selectedData} slot="actions"></lightning-button>  
+    <lightning-datatable
+    key-field="Id"
+    data={contactsRecords.data}
+    selected-rows={selectedRows}
+    columns={columns}>
+</lightning-datatable>
+</lightning-card>
+</template>

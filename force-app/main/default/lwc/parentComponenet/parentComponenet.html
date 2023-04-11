@@ -1,0 +1,68 @@
+<template>
+    <lightning-card>
+        <div>
+            <lightning-input class="slds-m-right_medium validate" label="Name" name="Name" type="text" onchange={handleChange} required="required"></lightning-input>
+        <!-- message-when-pattern-mismatch="Name Limit Exceed Or Invalid Name Format"-->
+            </div>
+        <div>
+            <lightning-input class="slds-m-right_medium validate" label="Email" name="Email" type="email" onchange={handleChange} required="required"></lightning-input>
+            </div>
+        <div>
+            <lightning-input class="slds-m-right_medium validate" label="Phone" name="Phone" onchange={handleChange} required="required"></lightning-input>
+            </div>
+        <lightning-button class="slds-m-right_medium" label="Submit" onclick={submitData}></lightning-button>
+    </lightning-card>
+</template>
+
+
+
+
+
+
+<!-- <template if:false={showdata}> -->
+<!--         
+    <lightning-card icon-name="standard:account" title="This Is Parent Componet">
+        <lightning-button-menu alternative-text="Show menu" icon-size="10px">
+            <lightning-menu-item value="MenuItemOne" label="Edit" onclick={fun1}></lightning-menu-item>
+        </lightning-button-menu>
+    
+
+        <lightning-record-view-form 
+    object-api-name={objectApiName}
+    record-id={recordId}
+>   <div>
+    <lightning-output-field field-name={nameField}> </lightning-output-field>
+
+    <lightning-output-field field-name={phoneField}> </lightning-output-field>
+    <lightning-output-field field-name={rating}> </lightning-output-field>
+</div>
+</lightning-record-view-form> -->
+
+<!-- <lightning-button label="Call Child function"></lightning-button>
+
+        <c-secondchild get-data-from-parent={Data}></c-secondchild>
+    </lightning-card> -->
+
+
+
+<!-- <c-child-component-lwc ongetdata={showChidData} >
+    </c-child-component-lwc> -->
+<!-- </lightning-card>
+</template>
+<template if:true={showdata}>
+    <lightning-card icon-name="standard:account" title="This Is Parent Componet">
+    <lightning-record-edit-form
+    object-api-name={objectApiName}
+    record-id={recordId}
+>   <div style="margin-left: 15px;">
+    <lightning-input-field field-name={nameField}> </lightning-input-field>
+    <lightning-input-field field-name={phoneField}> </lightning-input-field>
+    <lightning-input-field field-name={rating}> </lightning-input-field>
+</div>
+    <div class="slds-var-m-top_medium">
+        <lightning-button variant="brand" type="submit" label="Save" onclick={fun1}>
+        </lightning-button>
+    </div>
+</lightning-record-edit-form>
+</lightning-card>
+</template> -->

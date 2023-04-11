@@ -6,6 +6,10 @@ export default class ParentComponentwithChildNestingIteration extends LightningE
     str;
      i = 0;
     @track a = [];
+    personObject = {
+        Name:"John doe",
+        Age:55
+    }
 
 
     fun1(event){
